@@ -430,7 +430,7 @@ class FormElement extends HtmlElement
 {
     public function addInput($label_text, $name, $type, $value, $id = '', $class = array()) {
         
-        if($type != 'button' and $type != 'submit') {
+        if($type != 'button' and $type != 'submit' and $label_text != '') {
             $label = $this->createChild('label', 'label_'.$name, 'label_'.$name);
             $label->addProperty('for', $name);
             $label->addText($label_text);
@@ -459,7 +459,7 @@ class FormElement extends HtmlElement
 
 class ConditionElement extends HtmlElement
 {
-    protected $condition = true;
+    protected $condition = false;
     
     public function setCondition($condition)
     {
@@ -467,9 +467,9 @@ class ConditionElement extends HtmlElement
     }
     
     public function toPlainHTML() {
-        if($this->condition)
+        if($this->condition == true)
         {
-            if(count($this->childs) > 0)// C'est un element fini
+            if(count($this->childs) > 0)
             {
                 $html = '';
                 
@@ -495,7 +495,7 @@ class TemplateElement extends HtmlElement
     
     public function toPlainHTML() {
         
-        $text = call_user_func($this->ptrfunc, $this->parent);   
+        $text = call_user_func($this->ptrfunc);   
         return $text;
     }
 }
