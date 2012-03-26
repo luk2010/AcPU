@@ -1,0 +1,385 @@
+/* 
+    Document   : style
+    Created on : 1 mars 2012, 13:01:03
+    Author     : centauredu13
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+
+On met les styles css dans le meme ordre que le fichier
+qui les utilise ! Ca permet plus de logique ^^ 
+
+Les informations de style sont utilises par le navigateur dans l'ordre dans
+lequel il les prend : si on a une div qui a un id et une classe,
+le style de la div sera fusionne avec celui de l'id puis celui de la class.
+
+*/
+
+body
+{
+    min-width: 950px;/* Taille preferable de la page */
+    width: 100%;
+    min-height: 600px;
+    margin: 0px;
+    background-color: #fbfeff;
+    
+}
+
+/*
+    Bloc representant le haut de page
+*/
+header
+{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 38px;
+    margin: 0px;
+    background-color: #a65b0f ;
+    background-repeat: no-repeat;
+    background-repeat: repeat-x;
+    
+}
+/*titre du menu */
+header > h1
+{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+  
+    vertical-align: middle;
+    bottom: 15px;
+    height: 100%   ;
+    margin-left: 20px;
+    color: #4be8fb;
+    font-family: Arial;
+    font-size: 1.6em;
+    background-image: url("logo.png");
+    
+}
+/*cadre du menu (invisible)*/
+menu
+{
+    display: inline-block;
+    vertical-align: top; 
+    
+    margin-top: 5px;
+    margin-right: 30px;
+}
+
+/*
+    Item du menu
+*/
+menu > li
+{
+    display: inline-block;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-right: 1px solid #603715;
+    text-decoration: none;
+    
+ 
+}
+
+
+/*
+    Le dernier item n'a pas de bordure
+*/
+#hotline
+{
+    border-right: none;
+}
+
+/*
+    Les liens du menu
+*/
+menu > li > a
+{
+    width: 100%;
+    color: #4be8fb;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: left;
+}
+/* cadre jaune sous le header */
+#navigation
+{
+    display: block;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #a65b0f;
+    box-shadow: 0px 2px 2px;
+    
+}
+/* boutons bleus de la navigation ( general sehop lovers , et destination age sexe)*/
+#navigation a
+{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: #edfffe;
+    box-shadow: 0px -1px 2px #d9dada;
+    
+}
+#general
+{
+    margin-left: 21px;
+}
+#destination
+{
+    margin-left: 21px;
+}
+/* bouton "send" */
+#envoyer
+{
+    width: 35px;
+    height: 32px;
+    vertical-align: top;
+    margin-top: 15px;
+    margin-left: 20px;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+
+}
+/* cadre ou l'on peut ecrire */
+#zone_texte
+{
+    display: inline-block;
+    position: relative;
+    min-width: 330px;max-width: 330px;
+    min-height: 52px;max-height: 52px;
+    border: 1px solid silver;
+    border-radius: 2px 2px 2px 2px;
+    margin-top: 3px;
+    vertical-align: top;
+    margin-left:-6px;
+}
+/* bouton "search" */
+#rechercher
+{
+   
+    width: 35px;
+    height: 32px;
+    vertical-align: top;
+    margin-top: 15px;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+    margin-left: -5px;
+}
+
+/* bloc qui comprend le profil, les reponses au milieu de l'écran et la messagerie instantanée */
+#bloc_page
+{
+    display: inline-block;
+    position: relative;
+    min-width: 950px;
+    min-height: 400px;
+   
+}
+
+/* bloc du profil a gauche de l'écran */
+#mon_profil
+{
+    display: inline-block;
+    position: relative;
+    border-right: 1px dotted #4be8fb;
+    margin-top: 10px;
+    width: 130px;
+    height: 400px;
+}
+
+/* ecriture des mots dans le profil*/
+#mon_profil a
+{
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    font-family: arial;
+    font-size: 0.9em;
+    color: #a65b0f;
+}
+/* titre du profil ( n est pas de meme nature que les autres mots marrons */
+#titre_profil
+{
+    display: inline-block;
+    background-color: #e7ebff;
+    position: relative;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-left: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 1px -1px 2px #d9dada;
+    
+}
+/* ce qui a permis de faire les pointilles au dessus du nom */
+#nom
+{
+   border-top: 1px dotted silver;
+}
+/* de même pour les pointilles au dessus  de : best messages */
+#top5
+{
+    border-top: 1px dotted silver;
+}
+/* de même pour les pointilles au dessus de : photos */
+#photos
+{
+    border-top: 1px dotted silver;
+}
+/* cadre qui code pour les reponses au centre de l'écran */
+#cadre_haut
+{
+    display: inline-block;
+    position: relative;
+    width: 300px;
+
+    height:auto;
+    max-height: 100%;
+    margin-top: 15px;
+    vertical-align: top;
+    border-right: 1px solid #d9dada;
+    border-radius: 0px 3px 0px 0px;
+}
+/*codage du titre du cadre*/
+#titre_cadre_haut
+{
+    display: inline-block;
+    background-color: #e7ebff;
+    position: relative;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-left: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 1px -1px 2px #d9dada;
+    
+}
+/* cadre comprenant les noms des gens qui repondent et leur réponses */
+#cadre_haut p
+{
+    border-bottom: 1px solid #4be8fb;
+}
+/* ne comprend que les noms et prénoms des gens qui répondent */
+#cadre_haut a
+{
+    color: #a65b0f;
+}
+/*cadre qui affiche les resultats du bouton search*/
+#resultats
+{
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    max-width: 500px;
+    height:auto;
+    max-height: 100%;
+    margin-top: 15px;
+    vertical-align: top;
+    border-left: 1px solid #d9dada;
+    border-radius: 3px 0px 0px 0px;
+}
+/*codage du titre du cadre*/
+#titre_resultats
+{
+    display: inline-block;
+    background-color: #e7ebff;
+    position: relative;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-right: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -1px 2px #d9dada;
+}
+/*cadre qui code les noms et ce qu'ils disent*/
+#resultats p
+{
+    border-bottom: 1px solid #4be8fb;
+}
+/*cadre qui code uniquement le nom des gens*/
+#resultats a
+{
+    color: #a65b0f;
+}
+/* cadre qui code pour la messagerie instantanée a droite de l'écran*/
+#messagerie
+{
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    width: 200px;
+    height: 400px;;
+    border-left: 1px solid #a65b0f ;
+    border-radius: 4px 0px 0px 0px;
+    vertical-align: top;
+}
+/*titre du cadre de la messagerie*/
+#titre_messagerie
+{
+    display: inline-block;
+    background-color: #e7ebff;
+    position: relative;
+    margin:0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-left: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -1px 2px #d9dada;
+}
+/* cadre comprenant les noms des gens qui parlent et ce qu'ils disent */
+#messagerie p
+{
+    border-bottom: 1px dotted #4be8fb;
+}
+/* ne comprend que les noms et prénoms des gens qui parlent */
+#messagerie a
+{
+    color: #a65b0f;
+}
