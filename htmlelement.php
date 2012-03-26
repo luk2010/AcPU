@@ -244,6 +244,61 @@ class HtmlElement
     
     public function importHtml($html)
     {
+        $dom = new DOMDocument();
+        $dom->loadXML($html);
+        
+        $elements_list = $dom->getElementsByTagName('*');
+        foreach($elements_list as $element)
+        {
+            $this->importFromDomNode($element);
+        }
+        
+        return $this;
+    }
+    
+    public function importFromDomNode($element)
+    {
+        if(($element instanceof DOMNode) == false)
+            return;
+        
+        if($element->nodeType == XML_TEXT_NODE)
+        {
+            $this->addText($element->nodeValue);
+        }
+            
+        else
+        {
+            $child = $this->createChild($element->tagName);
+                
+            foreach($element->attributes as $attr)
+            {
+                if($attr->nodeName == 'id')
+                {
+                    $child->setID($attr->nodeValue);
+                }
+                else if($attr->nodeName == 'name')
+                {
+                    $child->setName($attr->nodeValue);
+                }
+                else if($attr->nodeName == 'class')
+                {
+                    $child->addClass($attr->nodeValue);
+                }
+                else
+                {
+                    $child->addProperty($attr->nodeName, $attr->nodeValue);
+                }
+            }
+                
+            if($element->hasChildNodes())
+            {
+                 foreach($element->childNodes as $subchild)
+                 {
+                     $child->importFromDomNode($subchild);
+                 }
+            }
+        }
+        
         return $this;
     }
     
