@@ -242,6 +242,11 @@ class HtmlElement
         return $template;
     }
     
+    public function importHtml($html)
+    {
+        return $this;
+    }
+    
     public function getChildByName($name)
     {
         if(count($this->childs) <= 0)
