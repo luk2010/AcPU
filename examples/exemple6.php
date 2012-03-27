@@ -11,7 +11,7 @@
  * 
  */
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 function myTemplate()
 {

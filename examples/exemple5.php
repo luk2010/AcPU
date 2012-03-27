@@ -1,6 +1,6 @@
 <?php
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 //Cet exemple montre comment utiliser les bases de donnees, ainsi que les variables POST
 

@@ -2,7 +2,7 @@
 
 // Un exemple de page plus complexe auto-generee ^^
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 $htmlConstructor = AcPU::get()->createHTMLConstructor('Constructor');
 

@@ -1,6 +1,6 @@
 <?php
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 //This is an example php file that draw a simple page
 

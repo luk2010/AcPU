@@ -4,7 +4,7 @@
  * Exemple 7 : Importing big site to AcPU
  */
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 $htmlConstructor = AcPU::get()->createHTMLConstructor('Constructor');
 

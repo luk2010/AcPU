@@ -1,6 +1,6 @@
 <?php
 
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 //Cette fonction remplace la fonction par defaut
 function headerfunc($title, $description)

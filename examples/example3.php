@@ -3,7 +3,7 @@
 //Cet example montre comment creer une page grace au HTMLConstructor
 
 //Inclusion de AcPU
-require 'AcPU.php';
+require '../AcPU/AcPU.php';
 
 //Creation du constructeur
 $htmlConstructor = AcPU::get()->createHTMLConstructor('My Constructor');
