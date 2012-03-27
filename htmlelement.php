@@ -302,6 +302,11 @@ class HtmlElement
                      $child->importFromDomNode($element, $subchild);
                  }
             }
+            
+            if($child->getBalise() == 'textarea' and count($child->childs) == 0)
+            {
+                $child->addText('');
+            }
         }
         
         return $this;

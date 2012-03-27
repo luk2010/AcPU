@@ -1,0 +1,639 @@
+/* 
+    Document   : style
+    Created on : 1 mars 2012, 13:01:03
+    Author     : centauredu13
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+
+On met les styles css dans le meme ordre que le fichier
+qui les utilise ! Ca permet plus de logique ^^ 
+
+Les informations de style sont utilises par le navigateur dans l'ordre dans
+lequel il les prend : si on a une div qui a un id et une classe,
+le style de la div sera fusionne avec celui de l'id puis celui de la class.
+
+*/
+
+body
+{
+    min-width: 1000px;/* Taille preferable de la page */
+    width: 100%;
+    min-height: 600px;
+    margin: 0px;
+
+    
+}
+
+/*
+    Bloc representant le haut de page
+*/
+header
+{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 38px;
+    margin: 0px;
+    background-color: #e8af65;
+
+    
+}
+#cadre_header
+{
+   
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*titre du menu */
+header  h1
+{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    bottom: 15px;
+    margin-top: 20px;
+    margin-left: 5px;
+    color: #edfffe;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 1.3em;
+    border: 1px solid #edfffe;
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px;
+    box-shadow: 2px -2px 5px #edfffe;
+   
+    
+}
+/*cadre du menu (invisible)*/
+menu
+{
+    display: inline-block;
+    vertical-align: top; 
+    
+    margin-top: 8px;
+    margin-right: 30px;
+}
+
+/*
+    Item du menu
+*/
+menu a
+{
+    display: inline-block;
+    height: auto;
+    background-color: #edfffe;
+    color: #e8af65;
+    margin-right: 5px;
+    text-decoration: none;
+    font-family: arial;
+    border: 1px solid #edfffe;
+    border-radius: 4px 4px 4px 4px;
+    padding: 3px;
+    box-shadow: 0px -4px 5px #edfffe;
+ 
+}
+
+
+/*
+    Le dernier item n'a pas de bordure
+*/
+
+#settings
+{
+    margin-left:230px;
+}
+
+/*
+    Les liens du menu
+*/
+
+/* cadre jaune sous le header */
+#navigation
+{
+    display: block;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    
+}
+#cadre_navigation
+{
+
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+/* boutons bleus de la navigation ( general sehop lovers , et destination age sexe)*/
+#navigation a
+{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: #edfffe;
+    box-shadow: 0px -2px 5px #d49e4c;
+    
+}
+#general
+{
+    margin-left: 47px;
+}
+#destination
+{
+    margin-left: 21px;
+}
+/* bouton "send" */
+#envoyer
+{
+    width: 35px;
+    height: 32px;
+    vertical-align: top;
+    margin-top: 15px;
+    margin-left: 20px;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+
+}
+/* cadre ou l'on peut ecrire */
+#zone_texte
+{
+    display: inline-block;
+    position: relative;
+    min-width: 330px;max-width: 330px;
+    min-height: 52px;max-height: 52px;
+    border: 1px solid silver;
+    border-radius: 2px 2px 2px 2px;
+    margin-top: 3px;
+    vertical-align: top;
+    margin-left:-5px;
+}
+/* bouton "search" */
+#rechercher
+{
+   
+    width: 35px;
+    height: 32px;
+    vertical-align: top;
+    margin-top: 15px;
+    border: 1px solid silver;
+    border-radius: 3px 3px 3px 3px;
+    margin-left: -7px;
+}
+/*bloc qui encadre le bloc page et la partie media*/
+#centre
+{
+    display: block;
+    position: relative;
+    width: 1000px;
+    margin-right: auto;
+    margin-left:  auto;
+    margin-top: 25px;
+    min-width: 1000px;
+    height: auto;
+}
+/* bloc du profil a gauche de l'écran */
+#mon_profil
+{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+/* ecriture des mots dans le profil*/
+#mon_profil a
+{   
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+    width: auto;
+    margin-left: 40px;
+    font-family: arial;
+    font-size: 0.9em;
+    color: #a65b0f;
+}
+/* titre du profil ( n est pas de meme nature que les autres mots marrons */
+#titre_profil
+{
+    display: inline-block;
+    position: relative;
+    background-color: #edfffe;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 3px 3px 0px 0px;
+    height: 20px;
+    width: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c;
+}
+
+
+/* bloc qui comprend le profil, les reponses au milieu de l'écran et la messagerie instantanée */
+#bloc_page
+{
+    display:inline-block;
+    position: relative;
+    min-width: 1000px;
+    height: auto;
+    margin: 0px;
+    vertical-align: top;
+}
+
+
+/* cadre qui code pour les reponses au centre de l'écran */
+#cadre_haut
+{
+    display: inline-block;
+    position: relative;
+    width: 37%;
+    height:900px;
+    max-height: 100%;
+    margin-top: 15px;
+    vertical-align: top;
+    border-right: 1px solid #d9dada;
+    border-radius: 0px 3px 0px 0px;
+
+}
+/*codage du titre du cadre*/
+#titre_cadre_haut
+{
+    display: inline-block;
+    background-color: #edfffe;
+    position: relative;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c;
+}
+/* cadre comprenant les noms des gens qui repondent et leur réponses */
+#cadre_haut p
+{
+    border-bottom: 1px solid #e6f8ff;
+    font-family: arial;
+    font-size: 0.8em;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    max-height: 300px;
+    max-width: 100%;
+    color: #423203;
+    
+}
+/* ne comprend que les noms et prénoms des gens qui répondent */
+#cadre_haut a
+{
+    position:relative;
+    color: #d49e4c;
+    font-family: arial;
+    font-size: 0.8em;
+    height: 100%;
+    width: auto;
+
+}
+#defilement
+{
+    border: 1px solid green;
+    border: 1px solid silver;
+    width: 80px;
+    border-bottom: none;
+    border-radius: 3px 3px 0px 0px;
+    background-color: #e7ebff;
+}
+#cadre_img
+{
+    width: auto;
+}
+/*parametrage des images elles ont toutes le meme code donc. */
+#img
+{
+    display: block;
+    width: 80px;
+    max-height: 80px;
+    box-shadow: 2px 2px 10px #95bbb9;
+    
+}
+/* codage es overflow sa t'avais compris je pense :P*/
+#overflow
+{
+    height: 868px;
+    overflow :auto;
+    
+}
+/*cadre qui affiche les resultats du bouton search*/
+#resultats
+{
+    display: inline-block;
+    position: relative;
+    width: 37%;
+    max-width: 500px;
+    height:900px;
+    max-height: 100%;
+    margin-top: 15px;
+    vertical-align: top;
+    border-left: 1px solid #d9dada;
+    border-radius: 3px 0px 0px 0px;
+}
+/*codage du titre du cadre*/
+#titre_resultats
+{
+    display: inline-block;
+    background-color: #edfffe;
+    position: relative;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c;
+}
+/*cadre qui code les noms et ce qu'ils disent*/
+#resultats p
+{
+    border-bottom: 1px solid #e6f8ff;
+    font-family: arial;
+    font-size: 0.8em;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    max-height: 300px;
+    max-width: 100%;
+    color: #423203;
+}
+/*cadre qui code uniquement le nom des gens*/
+#resultats a
+{
+
+    position: relative;
+    color: #d49e4c;
+    height: 100%;
+    font-family: arial;
+    font-size: 0.8em;
+}
+/* cadre qui code pour la messagerie instantanée a droite de l'écran*/
+#messagerie
+{
+    display: inline-block;
+    position: fixed;
+    margin-top: 15px;
+    width: 248px;
+    height: 400px;;
+    border: 1px solid silver;
+    border-top: none;
+    border-radius: 4px 0px 0px 0px;
+    vertical-align: bottom;
+}
+/*titre du cadre de la messagerie*/
+#titre_messagerie
+{
+    display: inline-block;
+    background-color: #edfffe;
+    position: relative;
+    margin:0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 3px 3px 0px 0px;
+    height: 20px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c; 
+}
+/* cadre comprenant les noms des gens qui parlent et ce qu'ils disent */
+#messagerie p
+{
+    border-bottom: 1px dotted #4be8fb;
+    font-family: arial;
+    font-size: 0.8em;
+}
+/* ne comprend que les noms et prénoms des gens qui parlent */
+#messagerie a
+{
+    color: #a65b0f;
+    font-family: arial;
+    font-size: 0.8em;
+}
+#overflow_messagerie
+{
+    display: block;
+    height: 76%;
+    margin: 0px;
+    
+}
+#cadre_ecriture
+{
+    display: inline-block;
+    position: relative;
+    width: 248px;
+    height: auto;
+    border-top: 1px solid silver;
+ 
+    
+}
+#ecriture
+{
+    display: inline-block;
+    width: 100%;
+    border: none;
+    font-family: arial;
+    font-size: 0.8em;
+}
+#bouton
+/*cadre du bas qui gere les titres le diapo fin tou en bas */
+#media
+{
+    display: inline-block;
+    position: relative;
+    width: 747px;
+    height: auto;
+    vertical-align: top;
+    border-top: 1px solid silver;
+}
+/* codage du titre des dossiers inseres*/
+#photos
+{
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-top: 15px;
+
+}
+/* personnalisation du titre */
+#titre_photos
+{
+    display: inline-block;
+    position: relative;
+    background-color: #edfffe;
+    margin: 0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 3px 3px 0px 0px;
+    height: 20px;
+    width: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c; 
+ 
+}
+/* codage des dossiers des photos*/
+#photos a
+{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: arial;
+    font-size: 0.7em;
+    color: #a65b0f;
+    text-decoration: none;
+}
+/*codage du diapo et de lapercu*/
+
+#affichage
+{
+    display: inline-block;
+    position: relative;
+    margin-top: 15px;
+    width: 744px;
+    height: 500px;
+    border: 1px solid black;
+}
+/* codage de l'apercu*/
+#deroulant
+{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border: 1px solid green;
+    
+}
+/* idem mais pour les videos !!*/
+#videos
+{
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-top: 15px;
+
+    margin-left: 28px;
+}
+#titre_videos
+{ 
+    display: inline-block;
+    position: relative;
+    background-color: #edfffe;
+    margin:0px;
+    color: #d49e4c;
+    border: 1px solid silver;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 3px 3px 0px 0px;
+    height: 20px;
+    width: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: arial;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0px -2px 5px #d49e4c; 
+ 
+}
+#videos a
+{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-family: arial;
+    font-size: 0.7em;
+    color: #a65b0f;
+    text-decoration: none;
+}
+
+#footer
+{
+    display: block;
+    position: relative;
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* codage des liens dans le footer*/
+#footer a
+{
+    margin-top: 10px;
+    color: #d49e4c;
+    margin-left: 15px;
+    font-family: arial;
+    font-size: 0.8em;
+    
+}
+/* codage du copyright*/
+#footer p
+{
+    width: auto;
+    margin-left: auto;
+    margin-left: auto;
+    font-family: arial;
+    font-size: 0.8em;
+    color: silver;
+    text-align: center;
+}
