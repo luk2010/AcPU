@@ -222,14 +222,14 @@ class HtmlElement
         return $input;
     }
     
-    public function addCondition($name, $condition)
+    public function addCondition($name, $condition = false)
     {
-        $condition = new ConditionElement();
-        $condition->setName($name);
-        $condition->setCondition($condition);
+        $conditionChild = new ConditionElement();
+        $conditionChild->setName($name);
+        $conditionChild->setCondition($condition);
         
-        $this->addChild($condition);
-        return $condition;
+        $this->addChild($conditionChild);
+        return $conditionChild;
     }
     
     public function addTemplate($name, $function)
@@ -248,17 +248,22 @@ class HtmlElement
         $dom->loadXML($html);
         
         $elements_list = $dom->getElementsByTagName('*');
+        $parent = $elements_list->item(0)->parentNode;
+        
         foreach($elements_list as $element)
         {
-            $this->importFromDomNode($element);
+            $this->importFromDomNode($parent, $element);
         }
         
         return $this;
     }
     
-    public function importFromDomNode($element)
+    public function importFromDomNode($parent, $element)
     {
         if(($element instanceof DOMNode) == false)
+            return;
+        
+        if($element->parentNode != $parent)
             return;
         
         if($element->nodeType == XML_TEXT_NODE)
@@ -294,7 +299,7 @@ class HtmlElement
             {
                  foreach($element->childNodes as $subchild)
                  {
-                     $child->importFromDomNode($subchild);
+                     $child->importFromDomNode($element, $subchild);
                  }
             }
         }
@@ -409,6 +414,13 @@ class HtmlElement
             }
         }
     }
+    
+    public function returnToLine($times = 1)
+    {
+        for($i = 0; $i < $times; $i++) {
+            $this->createChild('br');
+        }
+    }
 }
 
 class TextElement extends HtmlElement 
@@ -459,11 +471,11 @@ class FormElement extends HtmlElement
 
 class ConditionElement extends HtmlElement
 {
-    protected $condition = false;
+    public $condition = false;
     
     public function setCondition($condition)
     {
-        $this->condition = $condition;
+        $this->condition = ($condition == true);
     }
     
     public function toPlainHTML() {
