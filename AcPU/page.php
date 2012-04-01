@@ -127,13 +127,13 @@ class Page
         if(count($this->src_scripts) > 0)
         foreach($this->src_scripts as $script)
         {
-            echo '<script language="text/javascript" src="'.$script.'" />';
+            echo '<script language="JavaScript" type="text/javascript" src="'.$script.'"></script>';
         }
         
         if(count($this->scripts) > 0)
         foreach($this->scripts as $script)
         {
-            echo '<script language="text/javascript">'.$script.'</script>';
+            echo '<script type="text/javascript">'.$script.'</script>';
         }
         
         echo '<title>'.$title.'</title>';

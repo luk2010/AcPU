@@ -1,5 +1,6 @@
 <?php
 
+require 'JavaScriptConstructor.php';
 require 'htmlelement.php';
 
 class HTMLConstructor
@@ -13,6 +14,8 @@ class HTMLConstructor
     protected $element_center = NULL;
     
     protected $body = NULL;
+    
+    protected $jsConstructor = NULL;
     
     public function __construct($name) 
     {   
@@ -50,6 +53,25 @@ class HTMLConstructor
         return $this->body;
     }
     
+    public function getJavaScriptConstructor()
+    {
+        return $this->jsConstructor->jsConstructor;
+    }
+    
+    public function setJavaScriptConstructor($constructor)
+    {
+        $this->jsConstructor->jsConstructor = $constructor;
+        return $constructor;
+    }
+    
+    public function createJavaScriptConstructor($name)
+    {
+        $c = $this->setJavaScriptConstructor(new JavaScriptConstructor());
+        $c->setName($name);
+        
+        return $c;
+    }
+    
     public function constructBaseElement()
     {
         $this->body = new HtmlElement();
@@ -63,6 +85,9 @@ class HTMLConstructor
         
         $this->element_footer = $this->body->createChild();
         $this->element_footer->setBalise('footer__');
+        
+        $this->jsConstructor = new ScriptElement();
+        $this->body->addChild($this->jsConstructor);
     }
     
     public function initPage()

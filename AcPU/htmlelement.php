@@ -18,7 +18,7 @@ class HtmlElement
         return $this->childs;
     }
     
-    public function getParents()
+    public function getParent()
     {
         return $this->parent;
     }
@@ -46,6 +46,20 @@ class HtmlElement
     public function getBalise()
     {
         return $this->balise;
+    }
+    
+    public function getBody()
+    {
+        $next = $this->parent;
+        while($next->getBalise() != 'body')
+        {
+            $next = $next->getParent();
+            
+            if($next == NULL)
+                break;
+        }
+        
+        return $next;
     }
     
     public function addChild($child)
@@ -138,7 +152,8 @@ class HtmlElement
         }
         else
         {
-            $html .= '/>';
+            $html .= '>';
+            $html .= '</'.$this->balise.'>';
             return $html;
         }
     }
@@ -151,9 +166,9 @@ class HtmlElement
         $element->setName($name);
         $element->setID($id);
         
-        foreach($class as $class_)
+        foreach($class as $class_u)
         {
-            $element->addClass($class_);
+            $element->addClass($class_u);
         }
         
         $this->addChild($element);
@@ -168,9 +183,9 @@ class HtmlElement
         return $element;
     }
     
-    public function addParagraphe($text, $class = array())
+    public function addParagraphe($text, $class = array(), $id = '')
     {
-        $p = $this->createChild('p', '', '', $class);
+        $p = $this->createChild('p', '', $id, $class);
         $p->addText($text);
         
         return $p;
@@ -514,6 +529,19 @@ class TemplateElement extends HtmlElement
         
         $text = call_user_func($this->ptrfunc);   
         return $text;
+    }
+}
+
+class ScriptElement extends HtmlElement
+{
+    public $jsConstructor = NULL;
+    
+    public function toPlainHTML()
+    {
+        if($this->jsConstructor != NULL)
+            return $this->jsConstructor->draw();
+        
+        return 'gg';
     }
 }
 
