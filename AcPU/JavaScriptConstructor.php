@@ -4,7 +4,7 @@ require 'JavaScriptFunction.php';
 
 class JavaScriptConstructor extends JavaScriptFunction
 {
-    public $functions = array();
+    public $elements = array();
     public $name = '';
     
     public function createFunction($name, $argues, $content)
@@ -18,8 +18,13 @@ class JavaScriptConstructor extends JavaScriptFunction
             $function->addArgue($arg);
         }
         
-        $this->functions[] = $function;
+        $this->elements[] = $function;
         return $function;
+    }
+    
+    public function addElement($element)
+    {
+        $this->elements[] = $element;
     }
     
     public function setName($name)
@@ -29,10 +34,11 @@ class JavaScriptConstructor extends JavaScriptFunction
     
     public function getFunction($name)
     {
-        foreach($this->functions as $function)
+        foreach($this->elements as $function)
         {
-            if($function->getName() == 'name')
-                return $function;
+            if($function instanceof JavaScriptFunction)
+                if($function->getName() == $name)
+                    return $function;
         }
         
         return NULL;
@@ -40,46 +46,43 @@ class JavaScriptConstructor extends JavaScriptFunction
     
     public function removeFunction($name)
     {
-        foreach($this->functions as $function)
+        foreach($this->elements as $function)
         {
-            if($function->getName() == $name)
-            {
-                unset($this->functions);
-                $this->functions = array_values($this->functions);
-                break;
-            }
+            if($function instanceof JavaScriptFunction)
+                if($function->getName() == $name)
+                {
+                    unset($this->functions);
+                    $this->functions = array_values($this->functions);
+                    break;
+                }
         }
     }
     
     public function draw()
     {
-        $text = '<script name="'.$this->name.'" type="text/javascript" language="JavaScript" > $(function() { ';
+        $text = '<script name="'.$this->name.'" type="text/javascript" language="JavaScript" >';
         
-        foreach($this->functions as $function)
+        foreach($this->elements as $element)
         {
-            $text .= $function->draw();
+            $text .= $element->draw();
             $text .= ' ';
         }
         
-        $text .= $this->content;
-        
-        $text .= ' }); </script>';
+        $text .= '</script>';
         return $text;
     }
     
-    public function addEventListener($element, $event, $listenFunction)
+    public function initJQuery()
     {
-        if($event == '')
-        {
-            return false;
-        }
+        $jquery = new JavaScriptElement();
         
-        if($element->getID() == '')
-            return false;
+        $jquery->addInstruction('$(');
+        $jquery_function = $jquery->addFunction('', array(), '');
+        $jquery_function->setInline(true);
+        $jquery->addInstruction(');');
         
-        $this->addInstruction('$("#'.$element->getID().'").on("'.$event.'", '.$listenFunction->getName().'); ');
-        
-        return true;
+        $this->addElement($jquery);
+        return $jquery_function;
     }
 }
 
