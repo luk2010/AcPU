@@ -10,6 +10,7 @@ class HtmlElement
     protected $id = '';
     protected $balise = '';
     protected $name = '';
+    public $mustFinite = false;
     
     protected $properties = array();
     
@@ -106,6 +107,11 @@ class HtmlElement
         $this->balise = $b;
     }
     
+    public function mustBeFinite($f)
+    {
+        $this->mustFinite = $f;
+    }
+    
     public function toPlainHTML()
     {
         $html = '';
@@ -138,7 +144,11 @@ class HtmlElement
         if($this->name != '')
             $html .= 'name="'.$this->name.'" ';
         
-        if(count($this->childs) > 0)// C'est un element fini
+        if($this->mustFinite == true)
+        {
+            $html .= '/>';
+        }
+        else if(count($this->childs) > 0)// C'est un element fini
         {
             $html .= '>';
             
@@ -541,7 +551,7 @@ class ScriptElement extends HtmlElement
         if($this->jsConstructor != NULL)
             return $this->jsConstructor->draw();
         
-        return 'gg';
+        return '';
     }
 }
 

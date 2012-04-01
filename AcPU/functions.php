@@ -1,7 +1,10 @@
 <?php
 
 /*
- * Here, you can change the templates to draw a cool header and footer ;)
+ * Here, you can change the templates to draw a cool header and footer ;).
+ * 
+ * These functions are deprecated ! You should use HtmlConstructor to construct your page, 
+ * and import your html if you don't want to retype it ;).
  */
 
 //Draw the header
