@@ -84,6 +84,62 @@ class JavaScriptConstructor extends JavaScriptFunction
         $this->addElement($jquery);
         return $jquery_function;
     }
+    
+    public function initDragAndDrop()
+    {
+        $dragndrop = new JavaScriptDragDropHandler();
+        
+        $dragndrop->addInstruction('var dndHandler = { 
+            draggedElement: null,
+            applyDragEvents: ');
+        $applyDragEvents = $dragndrop->addFunction('', array('element'), '');
+            $applyDragEvents->addInstruction('element.draggable = true;');
+            $applyDragEvents->addInstruction('var dndHandler = this');
+            $applyDragEvents->addInstruction('element.addEeventListener(\'dragstart\', ');
+            $applyDragEvents_f1 = $applyDragEvents->addFunction('', array('e'), '');
+                $applyDragEvents_f1->addInstruction('dndHandler.draggedElement = e.target;');
+                $applyDragEvents_f1->addInstruction('e.dataTransfer.setData(\'text/plain\', \'\');');
+                $applyDragEvents_f1->setInline(true);
+            $applyDragEvents->addInstruction(', false);');
+            $applyDragEvents->setInline(true);
+        
+        $dragndrop->addInstruction(',
+            applyDropEvents: ');
+        $applyDropEvents = $dragndrop->addFunction('', array('dropper', 'class_'), '');
+            $applyDropEvents->setInline(true);
+            
+            $applyDropEvents->addInstruction('dropper.addEventListener(\'dragover\', ');
+            $applyDropEvents_f1 = $applyDropEvents->addFunction('', array('e'), '');
+                $applyDropEvents_f1->addInstruction('e.preventDefault();');
+                $applyDropEvents_f1->addInstruction('this.className = class_ + \' drop_hover\';');
+                $applyDropEvents_f1->setInline(true);
+            $applyDropEvents->addInstruction(');');
+            
+            $applyDropEvents->addInstruction('dropper.addEventListener(\'dragleave\', ');
+            $applyDropEvents_f2 = $applyDropEvents->addFunction('', array(), '');
+                $applyDropEvents_f2->addInstruction('this.className = class_;');
+                $applyDropEvents_f2->setInline(true);
+            $applyDropEvents->addInstruction(');');
+            
+            $applyDropEvents->addInstruction('var dndHandler = this;');
+            
+            $applyDropEvents->addInstruction('dropper.addEventListener(\'drop\', ');
+            $applyDropEvents_f3 = $applyDropEvents->addFunction('', array('e'), '');
+                $applyDropEvents_f3->addInstruction('var target = e.target, draggedElement = dndHandler.draggedElement, clonedElement = draggedelement.cloneNode(true);');
+                $applyDropEvents_f3->addInstruction('while (target.className.indexOf(class_) == -1) {');
+                $applyDropEvents_f3->addInstruction('target = target.parentNode;');
+                $applyDropEvents_f3->addInstruction('}');
+                $applyDropEvents_f3->addInstruction('target.className = class_;');
+                $applyDropEvents_f3->addInstruction('clonedElement = target.appendChild(clonedElement);dndHandler.applyDragEvents(clonedElement);');
+                $applyDropEvents_f3->addInstruction('draggedElement.parentNode.removeChild(draggedElement);');
+                $applyDropEvents_f3->setInline(true);
+            $applyDropEvents->addInstruction(');');
+        
+        $dragndrop->addInstruction('};');
+        
+        $this->addElement($dragndrop);
+        return $dragndrop;
+    }
 }
 
 ?>

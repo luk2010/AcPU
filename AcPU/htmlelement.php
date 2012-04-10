@@ -63,6 +63,13 @@ class HtmlElement
         return $next;
     }
     
+    public function addChilds($array = array())
+    {
+        foreach ($array as $child) {
+            $this->addChild($child);
+        }
+    }
+    
     public function addChild($child)
     {
         $this->childs[] = $child;
@@ -77,6 +84,14 @@ class HtmlElement
     public function addClass($c)
     {
         $this->class[] = $c;
+    }
+    
+    public function addClasses($array = array())
+    {
+        foreach ($array as $class)
+        {
+            $this->addClass($class);
+        }
     }
     
     public function setID($id)
@@ -166,6 +181,24 @@ class HtmlElement
             $html .= '</'.$this->balise.'>';
             return $html;
         }
+    }
+    
+    public function copyElement($new_name, $withChilds = true)
+    {
+        $element = new HtmlElement();
+        
+        $element->setBalise($this->getBalise());
+        $element->setName($new_name);
+        $element->setID($this->getID());
+        $element->addClasses($this->getClasses());
+        $element->addProperties($this->getProperties());
+        
+        if($withChilds == true)
+        {
+            $element->addChilds($this->getChilds());
+        }
+        
+        return $element;
     }
     
     public function createChild($balise = '', $name = '', $id = '', $class = array())
@@ -265,6 +298,21 @@ class HtmlElement
         
         $this->addChild($template);
         return $template;
+    }
+    
+    public function importHtmlFile($file)
+    {
+        if(file_exists($file))
+        {
+            $html = file_get_contents($file);
+            if($html != '')
+            {
+                return $this->importHtml(file_get_contents($file));
+            }
+        }
+        
+        return $this;
+        
     }
     
     public function importHtml($html)
@@ -393,6 +441,36 @@ class HtmlElement
         }
         
         return -1;
+    }
+    
+    public function findRecursiveByID($id)
+    {
+        foreach ($this->childs as $child) 
+        {
+            if($id == $child->getID())
+                return $child;
+            
+            $ret = $child->findRecursiveByID($id);
+            if($ret != NULL)
+                return $ret;
+        }
+        
+        return NULL;
+    }
+    
+    public function findRecursiveByName($id)
+    {
+        foreach ($this->childs as $child) 
+        {
+            if($id == $child->getName())
+                return $child;
+            
+            $ret = $child->findRecursiveByName($id);
+            if($ret != NULL)
+                return $ret;
+        }
+        
+        return NULL;
     }
     
     public function nextSibling()

@@ -146,4 +146,17 @@ class JavaScriptInstruction extends JavaScriptElement
     }
 }
 
+class JavaScriptDragDropHandler extends JavaScriptElement
+{
+    public function addDraggable($class)
+    {
+        $this->addInstruction('var '.$class.'_elements = document.querySelectorAll(\'.'.$class.'\');');
+        $this->addInstruction('var '.$class.'_elementsLenght = '.$class.'_elements.lenght;');
+        
+        $this->addInstruction('for(var i = 0 ; i < '.$class.'_elementsLenght ; i++) {');
+        $this->addInstruction('dndHandler.applyDragEvents('.$class.'_elements[i]);');
+        $this->addInstruction('}');
+    }
+}
+
 ?>

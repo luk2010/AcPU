@@ -17,6 +17,7 @@ $htmlConstructor = AcPU::get()->createHTMLConstructor('Constructor');
 
 $jsConstructor = $htmlConstructor->createJavaScriptConstructor('JSConstructor');
 $jquery = $jsConstructor->initJQuery();
+$dragdrop = $jsConstructor->initDragAndDrop();
 
 $htmlConstructor->getHeader()->createChildWithText('h1', 'Exemple 8', 'titre');
 
@@ -25,6 +26,10 @@ $center = $htmlConstructor->getCenter();
 $center->addText('Click on the paragraphe below to make him slideUp !');
 $paragraphe = $center->addParagraphe('I am a paragraphe...', array(), 'paragraphe');
 $paragraphe2 = $center->addParagraphe('Click on me to show again the text !', array(), 'ClickToShow');
+
+$carre1 = $center->createChild('div', 'My Draggable', '', array('draggable'));
+$dragdrop->addDraggable('draggable');
+$carre1->addText('Drag this to where you want ;)');
 
 // Evenement du paragraphe 1
 $javafunction_content = '$(this).slideUp();';
