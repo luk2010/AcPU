@@ -192,6 +192,7 @@ class HtmlElement
         $element->setID($this->getID());
         $element->addClasses($this->getClasses());
         $element->addProperties($this->getProperties());
+        $element->mustBeFinite($this->mustFinite);
         
         if($withChilds == true)
         {
