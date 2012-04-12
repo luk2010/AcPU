@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>AcPU</title>
+  <meta name="description" content="Atlanti's Corp Php Utility">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">AcPU</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Atlanti's Corp Php Utility</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/luk2010/AcPU/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/luk2010/AcPU/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/luk2010/AcPU" class="code">fork AcPU on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p>Atlanti's Corp Php Utility is a fantastic tool that help you develop cool web page in minute, without thinking about every bugs you may have using html, BDD, or JavaScript. 
+It is designed for programmers who already used any compiled language like C, C++, etc, because it use a Oriented-Object interface. 
+For designers, you also can import directly your Html Code to the AcPU HtmlElements system.</p>
+
+<p>The basic code to draw a simple page is :</p>
+
+<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'AcPU.php'</span><span class="p">;</span> <span class="c1">// This depends on where you stores AcPU</span>
+
+<span class="nv">$htmlConstructor</span> <span class="o">=</span> <span class="nx">AcPU</span><span class="o">::</span><span class="na">get</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createHTMLConstructor</span><span class="p">(</span><span class="s1">'My Constructor'</span><span class="p">);</span>
+
+<span class="nv">$htmlConstructor</span><span class="o">-&gt;</span><span class="na">getCenter</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createChildWithText</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">,</span> <span class="s1">'A big title !'</span><span class="p">,</span> <span class="s1">'My Big Title'</span><span class="p">);</span>
+<span class="nv">$htmlConstructor</span><span class="o">-&gt;</span><span class="na">getCenter</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addParagraphe</span><span class="p">(</span><span class="s1">'Hello World !'</span><span class="p">);</span>
+
+<span class="nv">$page</span> <span class="o">=</span> <span class="nx">Page</span><span class="o">::</span><span class="na">get</span><span class="p">();</span>
+<span class="nv">$page</span><span class="o">-&gt;</span><span class="na">setHTMLConstructor</span><span class="p">(</span><span class="nv">$htmlConstructor</span><span class="p">);</span>
+<span class="nv">$page</span><span class="o">-&gt;</span><span class="na">setManualHeader</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+<span class="nv">$page</span><span class="o">-&gt;</span><span class="na">addMeta</span><span class="p">(</span><span class="s1">'charset'</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">);</span>
+
+<span class="nv">$page</span><span class="o">-&gt;</span><span class="na">draw</span><span class="p">(</span><span class="s1">'My Pretty page'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+
+</pre>
+</div>
+
+
+<p>As you can see, beginning takes just a few more lines, but then you can quickly add a new element, with just one explicit line.
+You also can create your own element, to fully customize your AcPU. </p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/luk2010" class="avatar"><img src="https://secure.gravatar.com/avatar/889a72f80980d4cca0ddca997020ce85?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/luk2010">luk2010</a> maintains <a href="https://github.com/luk2010/AcPU">AcPU</a></p>
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/luk2010/AcPU/tarball/master" class="tar">tar</a><a href="https://github.com/luk2010/AcPU/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
