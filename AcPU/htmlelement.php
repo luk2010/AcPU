@@ -348,7 +348,8 @@ class HtmlElement
         else
         {
             $child = $this->createChild($element->tagName);
-                
+            
+            if($element->attributes != NULL)
             foreach($element->attributes as $attr)
             {
                 if($attr->nodeName == 'id')
