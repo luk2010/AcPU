@@ -28,7 +28,7 @@ class AcPU
     
     public static function version()
     {
-        return "AcPU build 21";
+        return "AcPU build 22";
     }
     
     public function initMySQLBdd($name, $login, $password, $adress)
@@ -77,6 +77,18 @@ class AcPU
     public function getGet($name)
     {
         return $_GET[$name];
+    }
+    
+    public function isLocal()
+    {
+        try {
+        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+        $bdd_test = new BDD(new PDO('mysql:host=localhost;dbname=information_schema', 'root', '', $pdo_options), 'test');
+        
+        return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
 
