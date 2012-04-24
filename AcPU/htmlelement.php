@@ -196,7 +196,11 @@ class HtmlElement
         
         if($withChilds == true)
         {
-            $element->addChilds($this->getChilds());
+            foreach($this->childs as $child)
+            {
+                if($child != NULL)
+                $element->addChild($child->copyElement($child->getName(), true));
+            }
         }
         
         return $element;

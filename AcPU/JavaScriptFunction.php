@@ -44,6 +44,15 @@ class JavaScriptElement
         return $function;
     }
     
+    public function addFile($file)
+    {
+        $fileElement = new JavaScriptFile();
+        $fileElement->setFile($file);
+        
+        $this->childs[] = $fileElement;
+        return $fileElement;
+    }
+    
     public function draw()
     {
         $text = '';
@@ -156,6 +165,21 @@ class JavaScriptDragDropHandler extends JavaScriptElement
         $this->addInstruction('for(var i = 0 ; i < '.$class.'_elementsLenght ; i++) {');
         $this->addInstruction('dndHandler.applyDragEvents('.$class.'_elements[i]);');
         $this->addInstruction('}');
+    }
+}
+
+class JavaScriptFile extends JavaScriptElement
+{
+    public $file = '';
+    
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+    
+    public function draw()
+    {
+        return file_get_contents($this->file);
     }
 }
 
