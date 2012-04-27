@@ -156,7 +156,7 @@ class HtmlElement
         if($this->id != '')
             $html .= 'id="'.$this->id.'" ';
         
-        if($this->name != '')
+        if($this->name != '' and $this->balise != 'div')
             $html .= 'name="'.$this->name.'" ';
         
         if($this->mustFinite == true)
@@ -185,8 +185,14 @@ class HtmlElement
     
     public function copyElement($new_name, $withChilds = true)
     {
-        $element = new HtmlElement();
+        $element = new HtmlElement();      
+        $this->copyContent($element, $new_name, $withChilds);
         
+        return $element;
+    }
+    
+    public function copyContent(&$element, $new_name, $withChilds = true)
+    {
         $element->setBalise($this->getBalise());
         $element->setName($new_name);
         $element->setID($this->getID());
@@ -198,12 +204,9 @@ class HtmlElement
         {
             foreach($this->childs as $child)
             {
-                if($child != NULL)
                 $element->addChild($child->copyElement($child->getName(), true));
             }
         }
-        
-        return $element;
     }
     
     public function createChild($balise = '', $name = '', $id = '', $class = array())
@@ -550,6 +553,15 @@ class TextElement extends HtmlElement
     {
         return $this->text;
     }
+    
+    public function copyElement($new_name, $withChilds = true) 
+    {
+        $element = new TextElement();
+        $this->copyContent($element, $new_name, $withChilds);    
+        $element->text = $this->text;
+        
+        return $element;
+    }
 }
 
 class FormElement extends HtmlElement
@@ -608,6 +620,14 @@ class ConditionElement extends HtmlElement
             }
         }
     }
+    
+    public function copyElement($new_name, $withChilds = true) {
+        $element = new ConditionElement();
+        $element->setCondition($this->condition);
+        $this->copyContent($element, $new_name, $withChilds);
+        
+        return $element;
+    }
 }
 
 class TemplateElement extends HtmlElement
@@ -624,6 +644,15 @@ class TemplateElement extends HtmlElement
         $text = call_user_func($this->ptrfunc);   
         return $text;
     }
+    
+    public function copyElement($new_name, $withChilds = true)
+    {
+        $e = new TemplateElement();
+        $this->copyContent($e, $new_name, $withChilds);
+        $e->setFunction($this->ptrfunc);
+        
+        return $e;
+    }
 }
 
 class ScriptElement extends HtmlElement
@@ -636,6 +665,15 @@ class ScriptElement extends HtmlElement
             return $this->jsConstructor->draw();
         
         return '';
+    }
+    
+    public function copyElement($new_name, $withChilds = true) 
+    {
+        $e = new ScriptElement();
+        $this->copyContent($e, $new_name, $withChilds);
+        $e->jsConstructor = $this->jsConstructor;
+        
+        return $e;
     }
 }
 
