@@ -1,0 +1,45 @@
+
+body {
+	width: 100%;
+}
+
+center__, header__, footer__ {
+	width: 100%;
+}
+
+.acpu-layout-hrz {
+	display: flex;
+	width: 100%;
+	flex-flow: row nowrap;
+	border-spacing: 4px;
+	padding: 4px;
+}
+
+/* -- Webkit Spec -- */
+.acpu-layout-hrz {
+	display: -webkit-flex;
+	-webkit-flex-flow: row nowrap;
+}
+
+.acpu-layout-hrz div {
+	background-color: coral;
+	border: 1px dotted black;
+	border-spacing: 2px;
+	margin: 1px;
+	padding: 2px;
+}
+
+.acpu-layout-vert {
+	display: flex;
+	height: auto;
+	flex-flow: column nowrap;
+	border-spacing: 4px;
+	padding: 4px;
+}
+
+@media screen and (max-width: 768px) {
+	.acpu-layout-hrz {
+		-webkit-flex-flow: column nowrap;
+		flex-flow: column nowrap;
+	}
+}

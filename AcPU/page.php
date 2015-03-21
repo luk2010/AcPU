@@ -22,6 +22,19 @@ class Page
         
         return self::$instance;
     }
+	
+	/////////////////////////////////////////////////////
+	/// @brief Returns the Page instance.
+	/////////////////////////////////////////////////////
+	/*public function Get() 
+    {
+        if(!isset(self::$instance))
+        {
+            self::$instance = new self;
+        }
+        
+        return self::$instance;
+    }*/
     
     //Members
     
@@ -34,9 +47,9 @@ class Page
     public $manual_header = true;
     public $use_htmlconstructor  = false;
     
-    public $headerfunc = Header_Func;
-    public $centerfunc = Center_Function;
-    public $footerfunc = Footer_Func;
+    public $headerfunc = /* Header_Func */ null;
+    public $centerfunc = /* Center_Function */ null;
+    public $footerfunc = /* Footer_Func */ null;
     
     public $constructor = NULL;
     
@@ -55,6 +68,14 @@ class Page
             $this->use_htmlconstructor = true;
         }
     }
+	
+	/////////////////////////////////////////////////////
+	/// @brief Returns the HTMLConstructor associated with
+	/// this Page object.
+	/////////////////////////////////////////////////////
+	public function GetHtmlConstructor() {
+		return $this->constructor;
+	}
     
     public function draw($title, $description)
     {
@@ -165,7 +186,6 @@ class Page
     {
         return htmlspecialchars($sentence);
     }
-    
 }
 
 ?>

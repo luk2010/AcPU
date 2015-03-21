@@ -1,8 +1,8 @@
 <?php
 
-require 'functions.php';
-require 'bdd.php';
-require 'page.php';
+require_once 'functions.php';
+require_once 'bdd.php';
+require_once 'page.php';
 
 class AcPU
 {
@@ -28,7 +28,7 @@ class AcPU
     
     public static function version()
     {
-        return "AcPU build 24";
+        return "AcPU build 25";
     }
     
     public function initMySQLBdd($name, $login, $password, $adress)
