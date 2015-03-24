@@ -28,7 +28,7 @@ class AcPU
     
     public static function version()
     {
-        return "AcPU build 25";
+        return "AcPU build 26";
     }
     
     public function initMySQLBdd($name, $login, $password, $adress)

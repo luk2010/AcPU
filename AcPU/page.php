@@ -186,6 +186,7 @@ class Page
     {
         return htmlspecialchars($sentence);
     }
+ 
 }
 
 ?>

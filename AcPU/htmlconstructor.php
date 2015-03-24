@@ -2,6 +2,7 @@
 
 require 'JavaScriptConstructor.php';
 require 'htmlelement.php';
+require 'UiConstructor.php';
 
 class HTMLConstructor
 {
@@ -74,17 +75,15 @@ class HTMLConstructor
     
     public function constructBaseElement()
     {
-        $this->body = new HtmlElement();
+		// From Build 26 and above, this function creates directly 
+		// UiElement Objects to ensure that it can use every functions.
+		
+        $this->body = new UiElement();
         $this->body->setBalise('body');
         
-        $this->element_header = $this->body->createChild();
-        $this->element_header->setBalise('header__');
-        
-        $this->element_center = $this->body->createChild();
-        $this->element_center->setBalise('center__');
-        
-        $this->element_footer = $this->body->createChild();
-        $this->element_footer->setBalise('footer__');
+        $this->element_header = $this->body->CreateAndAdd('header');   
+        $this->element_center = $this->body->CreateAndAdd('center');
+        $this->element_footer = $this->body->CreateAndAdd('footer');
         
         $this->jsConstructor = new ScriptElement();
         $this->body->addChild($this->jsConstructor);

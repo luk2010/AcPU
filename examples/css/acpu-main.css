@@ -21,14 +21,6 @@ center__, header__, footer__ {
 	-webkit-flex-flow: row nowrap;
 }
 
-.acpu-layout-hrz div {
-	background-color: coral;
-	border: 1px dotted black;
-	border-spacing: 2px;
-	margin: 1px;
-	padding: 2px;
-}
-
 .acpu-layout-vert {
 	display: flex;
 	height: auto;

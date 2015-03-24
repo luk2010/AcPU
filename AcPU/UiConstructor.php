@@ -5,11 +5,78 @@
 	Purpose : A helper class to create Ui Elements.
 */
 
+require 'Utils.php';
 require_once "page.php";
 
 class UiElement extends HtmlElement
 {
+	private $styles; // Array of styles, by key and value.
 	
+	public function __construct() {
+		$this->styles = array();
+	}
+	
+	/////////////////////////////////////////////////////
+	/// @brief Adds given style property to the object.
+	/////////////////////////////////////////////////////
+	public function AddStyle($propname, $propvalue) {
+		$this->styles[$propname] = $propvalue;
+	}
+	
+	/////////////////////////////////////////////////////
+	/// @brief Adds several styles properties to an Object.
+	/////////////////////////////////////////////////////
+	public function AddStyles($proparrays) {
+		foreach($proparrays as $prop => $value) {
+			$this->styles[$prop] = $value;
+		}
+	}
+	
+	/////////////////////////////////////////////////////
+	/// @brief Creates a new UiElement.
+	/////////////////////////////////////////////////////
+	public function Create($balise, $name = '', $id = '', $class = array(), $style = array()) {
+		$uielement = new UiElement();
+		$uielement->SetBalise($balise);
+        $uielement->SetName($name);
+        $uielement->SetID($id);
+		$uielement->class = $class;
+		$uielement->styles = $style;
+		return $uielement;
+	}
+	
+	/////////////////////////////////////////////////////
+	/// @brief Creates a new UiElement and adds it to the
+	/// object.
+	/////////////////////////////////////////////////////
+	public function CreateAndAdd($balise, $name = '', $id = '', $class = array(), $style = array()) {
+		$uielement = $this->Create($balise, $name, $id, $class, $style);
+		$this->AddChild($uielement);
+		return $uielement;
+	}
+	
+	/////////////////////////////////////////////////////
+	/// @brief Sets the correct style to the Object then
+	/// call the normal ::toPlainHtml() method.
+	/////////////////////////////////////////////////////
+	public function toPlainHtml() {
+		
+		$property = 'style';
+		$content  = '';
+		
+		foreach ($this->styles as $name => $value) {
+			$content .= $name . ":" . $value . ";";
+		}
+		
+		if(count($this->styles) > 0) {
+			if(array_key_exists('style', $this->properties) == false)
+				$this->AddProperty($property, $content);
+			else
+				$this->properties['style'] .= $content;
+		}
+		
+		return parent::toPlainHtml();
+	}
 }
 
 class UiMenuBar extends UiElement
@@ -18,8 +85,8 @@ class UiMenuBar extends UiElement
 	public $MenuElementUl;
 	
 	public function AddItem($ItemName) {
-		$Item = $this->MenuElementUl->createChild('li');
-		$Item->createChild('a')->createChild('span')->addText($ItemName);
+		$Item = $this->MenuElementUl->CreateAndAdd('li');
+		$Item->CreateAndAdd('a')->CreateAndAdd('span')->addText($ItemName);
 		return $Item;
 	}
 	
@@ -42,7 +109,7 @@ class UiLayout extends UiElement
 			return $this->DivArrays[$divid];
 		} else if (count($this->DivArrays) == $divid) {
 			// Create a new element
-			$div = $this->Container->createChild('div');
+			$div = $this->Container->CreateAndAdd('div');
 			$this->DivArrays[] = $div;
 			return $div;
 		} else {
@@ -63,7 +130,7 @@ class UiConstructor
 	
 	public function CreateSimpleTitle($level, $text, $parent = null) {
 		// You can create a new title and add it manually or specify the parent.	
-		$title = new UiElement;
+		$title = new UiElement();
 		$title->setBalise("h".$level);
 		$title->addText($text);
 		
@@ -85,9 +152,9 @@ class UiConstructor
 		$MenuBar = new UiMenuBar();
 		
 		// We create a new element.
-		$MenuBar->MenuElementDiv = $MenuBar->createChild('div', $MenuName);
+		$MenuBar->MenuElementDiv = $MenuBar->CreateAndAdd('div', $MenuName);
 		$MenuBar->MenuElementDiv->setID($MenuName);
-		$MenuBar->MenuElementUl = $MenuBar->MenuElementDiv->createChild('ul');
+		$MenuBar->MenuElementUl = $MenuBar->MenuElementDiv->CreateAndAdd('ul');
 		
 		// We add every items in the menu.
 		foreach($ItemsArray as $Element) {
@@ -106,7 +173,7 @@ class UiConstructor
 		
 		$Layout = new UiLayout;
 		if($Parent != null)
-			$Layout->Container = $Parent->createChild('div');
+			$Layout->Container = $Parent->CreateAndAdd('div');
 		else {
 			$Layout->Container = new UiElement;
 			$Layout->Container->setBalise('div');
@@ -115,7 +182,7 @@ class UiConstructor
 		if($LayoutProperties != null) {
 			
 		foreach($LayoutProperties as $id => $Property) {
-			$div = $Layout->Container->createChild('div');
+			$div = $Layout->Container->CreateAndAdd('div');
 			$divstyle = '';
 			
 			foreach($Property as $name => $value) {

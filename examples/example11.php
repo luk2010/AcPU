@@ -24,6 +24,18 @@ $Title1 = $UiConstructor->CreateSimpleTitle(2, 'Example 11', $htmlConstructor->G
 
 $Vert = $UiConstructor->CreateVerticalLayout(null, $htmlConstructor->GetCenter());
 
+$layout1style = array ('background-color' => 'coral', 
+					   'border' => '1px dotted black',
+					   'border-spacing' => '2px',
+					   'margin' => '1px',
+					   'padding' => '2px');
+
+$layout2style = array ('background-color' => 'blue', 
+					   'border' => '1px dotted black',
+					   'border-spacing' => '2px',
+					   'margin' => '1px',
+					   'padding' => '2px');
+
 $layout1prop = array (
 	0 => array('grow' => '1'),
 	1 => array('grow' => '1')
@@ -35,12 +47,16 @@ $layout2prop = array (
 );
 
 $MyLayout = $UiConstructor->CreateHorizontalLayout($layout1prop, $Vert->Get(0));
+$MyLayout->Container->AddStyles($layout1style); 
+
 $MyLayoutT1 = $UiConstructor->CreateSimpleTitle(2, 'Layout 1', $MyLayout->Get(0));
 $MyLayoutT2 = $UiConstructor->CreateSimpleTitle(2, 'Layout 2', $MyLayout->Get(1));
 $MyLayout->Get(0)->AddParagraphe('Layout 1');
 $MyLayout->Get(1)->AddParagraphe('Layout 2');
 
 $MyLayout2 = $UiConstructor->CreateHorizontalLayout($layout2prop, $Vert->Get(1));
+$MyLayout2->Container->AddStyles($layout2style);
+
 $MyLayout2T1 = $UiConstructor->CreateSimpleTitle(2, 'Layout 3', $MyLayout2->Get(0));
 $MyLayout2T2 = $UiConstructor->CreateSimpleTitle(2, 'Layout 4', $MyLayout2->Get(1));
 $MyLayout2->Get(0)->AddParagraphe('Layout 3');

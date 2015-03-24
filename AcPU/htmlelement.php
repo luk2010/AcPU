@@ -3,7 +3,7 @@
 class HtmlElement
 {
     protected $childs = array();
-    protected $parent = NULL;
+    protected $mparent = NULL;
     
     protected $class = array();
     
@@ -21,7 +21,7 @@ class HtmlElement
     
     public function getParent()
     {
-        return $this->parent;
+        return $this->mparent;
     }
     
     public function getClasses()
@@ -51,7 +51,7 @@ class HtmlElement
     
     public function getBody()
     {
-        $next = $this->parent;
+        $next = $this->mparent;
         while($next->getBalise() != 'body')
         {
             $next = $next->getParent();
@@ -135,6 +135,7 @@ class HtmlElement
             return $html;
         
         $html .= '<'.$this->balise.' ';
+		
             
         foreach($this->properties as $property => $content)
         {
