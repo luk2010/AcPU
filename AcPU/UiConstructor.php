@@ -117,6 +117,44 @@ class UiLayout extends UiElement
 		}
 	}
 	
+	/////////////////////////////////////////////////////
+	/// @brief Parse Properties given to this layout.
+	/////////////////////////////////////////////////////
+	public function ParseProperties($LayoutProperties) {
+		if($LayoutProperties != null) {
+			
+		foreach($LayoutProperties as $id => $Property) {
+			
+			if($id === "ContainerStyle") {
+					// Specify the Style array for the Container.
+					$this->Container->AddStyles($Property);
+			}
+			else if($id === "ContainerClasses") {
+				// Specify classes for the Container.
+				$this->Container->AddClasses($Property);
+			}
+			else if(is_numeric($id)) {
+				$div = $this->Container->CreateAndAdd('div');
+				$divstyle = '';
+				
+				foreach($Property as $name => $value) {
+					if($name == "grow") {
+						$divstyle .= "-webkit-flex-grow:".$value.";";
+						$divstyle .= "flex-grow:".$value.";";
+					}
+					else if($name == "min-width") {
+						$divstyle .= "min-width".$value.";";
+					}
+				}
+				
+				$div->addProperty('style', $divstyle);
+				$this->DivArrays[] = $div;
+			}
+		}
+			
+		}
+	}
+	
 	public function toPlainHtml() {
 		return $this->Container->toPlainHtml();
 	}
@@ -179,27 +217,7 @@ class UiConstructor
 			$Layout->Container->setBalise('div');
 		}
 		
-		if($LayoutProperties != null) {
-			
-		foreach($LayoutProperties as $id => $Property) {
-			$div = $Layout->Container->CreateAndAdd('div');
-			$divstyle = '';
-			
-			foreach($Property as $name => $value) {
-				if($name == "grow") {
-					$divstyle .= "-webkit-flex-grow:".$value.";";
-					$divstyle .= "flex-grow:".$value.";";
-				}
-				else if($name == "min-width") {
-					$divstyle .= "min-width".$value.";";
-				}
-			}
-			
-			$div->addProperty('style', $divstyle);
-			$Layout->DivArrays[] = $div;
-		}
-			
-		}
+		$Layout->ParseProperties($LayoutProperties);
 		
 		return $Layout;
 	}
